@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/js-revision/static/css/main.8261c404.css",
+    "main.js": "/js-revision/static/js/main.58be2a95.js",
+    "index.html": "/js-revision/index.html",
+    "main.8261c404.css.map": "/js-revision/static/css/main.8261c404.css.map",
+    "main.58be2a95.js.map": "/js-revision/static/js/main.58be2a95.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8261c404.css",
+    "static/js/main.58be2a95.js"
+  ]
+}
