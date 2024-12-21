@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 10px;
+}
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav li {
+  display: inline;
+  margin-right: 15px;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 5px;
+}
