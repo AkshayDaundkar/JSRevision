@@ -77,7 +77,7 @@ function App() {
             <Routes>
               <Route path="/" element={
                 <div className="welcome-screen">
-                  <h1>JavaScript Revision</h1>
+                  <h1>JavaScript Revision - Akshay Daundkar</h1>
                   <p>Explore modern JavaScript concepts with interactive example, Akshay Lets Revise It.</p>
                 </div>
               } />
