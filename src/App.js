@@ -2,10 +2,11 @@ import './App.css';
 import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import React from 'react';
 import CodeExample from './components/CodeExample';
-import { examples } from './data/examples';
+import { examples, exampleGroups } from './data/examples';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  const [openGroups, setOpenGroups] = React.useState({});
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -22,10 +23,17 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const toggleGroup = (groupId) => {
+    setOpenGroups(prev => ({
+      ...prev,
+      [groupId]: !prev[groupId]
+    }));
+  };
+
   return (
     <HashRouter>
       <div className="App">
-        <div className="layout">
+        <div className={`layout ${isSidebarOpen ? 'sidebar-open' : ''}`}>
           <button 
             className="menu-toggle" 
             onClick={toggleSidebar}
@@ -35,12 +43,31 @@ function App() {
           <nav className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
             <h1>JS Topics</h1>
             <ul className="nav-links">
-              <li><Link to="/">Home</Link></li>
-              {examples.map((example) => (
-                <li key={example.path}>
-                  <Link to={example.path} onClick={() => setIsSidebarOpen(false)}>
-                    {example.title}
-                  </Link>
+              {Object.entries(exampleGroups).map(([groupName, group]) => (
+                <li key={group.id}>
+                  <div 
+                    className="group-header" 
+                    onClick={() => toggleGroup(group.id)}
+                  >
+                    <span>{groupName}</span>
+                    <span className={`arrow ${openGroups[group.id] ? 'open' : ''}`}>
+                      ▼
+                    </span>
+                  </div>
+                  {openGroups[group.id] && (
+                    <ul className="sub-nav">
+                      {group.items.map(item => (
+                        <li key={item.path}>
+                          <Link 
+                            to={item.path} 
+                            onClick={() => setIsSidebarOpen(false)}
+                          >
+                            {item.title}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
             </ul>

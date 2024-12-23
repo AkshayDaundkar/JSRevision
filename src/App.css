@@ -21,7 +21,7 @@
 
 .sidebar {
   background-color: var(--sidebar-color);
-  padding: 2rem;
+  padding: 1rem;
   border-right: 1px solid #404756;
 }
 
@@ -176,7 +176,7 @@
   .sidebar {
     position: fixed;
     top: 0;
-    left: -250px;
+    left: -350px;
     height: 100vh;
     width: 250px;
     transition: left 0.3s ease;
@@ -252,4 +252,42 @@
   .code-example {
     padding: 0.75rem;
   }
+}
+
+.group-header {
+  color: var(--secondary-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.group-header:hover {
+  background-color: rgba(97, 218, 251, 0.1);
+}
+
+.arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.sub-nav {
+  list-style: none;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+}
+
+.sub-nav li {
+  margin: 0.5rem 0;
+}
+
+.sub-nav a {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
 }
