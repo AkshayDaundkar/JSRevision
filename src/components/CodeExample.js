@@ -7,6 +7,7 @@ function CodeExample({ title, description, code }) {
   const [error, setError] = React.useState(null);
   const [isEditorReady, setIsEditorReady] = React.useState(false);
   const [editorHeight, setEditorHeight] = React.useState('300px');
+  const [showDocs, setShowDocs] = React.useState(false);
 
   React.useEffect(() => {
     setEditorCode(code);
@@ -66,7 +67,37 @@ function CodeExample({ title, description, code }) {
       <div className="example-header">
         <h2>{title}</h2>
         <p className="description">{description}</p>
+        <button 
+          className="docs-toggle" 
+          onClick={() => setShowDocs(!showDocs)}
+        >
+          {showDocs ? '📝 Hide Documentation' : '📖 Show Documentation'}
+        </button>
       </div>
+      
+      {showDocs && (
+        <div className="documentation-panel">
+          <div className="documentation-content">
+            <h3>Example Code:</h3>
+            <pre>
+              <code>{code}</code>
+            </pre>
+            <div className="copy-button-wrapper">
+              <button 
+                className="copy-button"
+                onClick={() => {
+                  navigator.clipboard.writeText(code);
+                  const btn = document.querySelector('.copy-button');
+                  btn.textContent = 'Copied!';
+                  setTimeout(() => btn.textContent = 'Copy Code', 2000);
+                }}
+              >
+                Copy Code
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       
       <div className="editor-container">
         <div className="editor-wrapper">
